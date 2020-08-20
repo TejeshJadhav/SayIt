@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f5uusd5^mjlvj7uc3qcntr4&^%@v7q0%d_tp14vasdasdqwrq2e4qwdli)8o-sx(qj'
+SECRET_KEY = 'f5uusd5^mjlvj7uc3qcntr4&^%@v7q0%_tp14vasdasdqwrq2e4qwdli)8o-sx(qj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sayit.blah']
+ALLOWED_HOSTS = ['sayit.blah','localhost']
 
 
 # Application definition
@@ -37,9 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'djangular',
+    'djng',
+    'easy_thumbnails',
+    'taggit',
+    'django.contrib.sites',
+    'signage',
+    'crispy_forms',
+
+    'posts',
 ]
 
+SITE_ID = 5
+
 MIDDLEWARE = [
+    # 'djangular.middleware.DjangularUrlMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,7 +67,7 @@ ROOT_URLCONF = 'SayIt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'SayIt.wsgi.application'
+# WSGI_APPLICATION = 'SayIt.wsgi.application'
 
 
 # Database
@@ -118,3 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "signage/static")
+
+
+STATICFILES_DIRS = [
+    ('node_modules', os.path.join(BASE_DIR, 'node_modules')),
+    os.path.join(BASE_DIR, "signage/static"),
+    os.path.join(BASE_DIR,'slides')
+]

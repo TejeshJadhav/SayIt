@@ -8,6 +8,14 @@ pylint = "*"
 
 [packages]
 django = "==2.2.13"
+django-model-utils = "*"
+django-taggit = "*"
+pillow = "*"
+django-rest-framework = "*"
+django-crispy-forms = "*"
+django-angular = "*"
+easy-thumbnails = "*"
+djangular = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,0 +1,92 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>display</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      background-color: #000;
+      cursor: none !important;
+      overflow: hidden;
+      margin: 0;
+      min-height: 100%;
+    }
+
+    video {
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .slide {
+      bottom: 0;
+      height: auto;
+      left: 0;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+    }
+
+    .slide.ng-enter {
+      transition: 1s linear all;
+      opacity: 0;
+    }
+
+    .slide.ng-enter.ng-enter-active {
+      opacity: 1;
+    }
+
+    .slide.ng-leave {
+      transition: 1s linear all;
+      opacity: 1;
+    }
+
+    .slide.ng-leave.ng-leave-active {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body ng-app="signage" ng-controller="ContentController">
+  {% verbatim %}
+    <div ng-if="!hasVideo()">
+      <img background-color class="slide" ng-repeat="slide in slideService.slides" ng-if="slideService.isCurrentSlide($index)" ng-src="{{ slide.image }}" crossorigin="anonymous">
+    </div>
+    <div ng-if="hasVideo()">
+      <video play-video></video>
+    </div>
+  {% endverbatim %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+  <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+  <script src="{% static "js/vibrant.js" %}"></script>
+  <script src="{% static "djng/js/django-angular.js" %}"></script>
+  <script src="{% static "app/app.js" %}"></script>
+  <script src="{% static "app/slide/slide.js" %}"></script>
+  <script src="{% static "app/video/video.js" %}"></script>
+  <script>
+    angular.module('signage.context', [])
+      .factory('displayContext', function() {
+        return {
+          pk: "{{ display.pk }}",
+          interval: "{{ display.update_interval }}",
+        }
+      });
+  </script>
+</body>
+</html>
