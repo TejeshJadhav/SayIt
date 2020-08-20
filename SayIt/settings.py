@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'posts',
 ]
 
-SITE_ID = 5
+SITE_ID = 4
 
 MIDDLEWARE = [
     # 'djangular.middleware.DjangularUrlMiddleware',
