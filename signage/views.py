@@ -21,7 +21,7 @@ class StaffRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_staff
 
-
+#angular template used
 class DisplayDetail(DetailView):
     model = Display
 
@@ -44,20 +44,22 @@ class DisplayDelete(StaffRequiredMixin, DeleteView):
     model = Display
     success_url = reverse_lazy('signage:display_list')
 
-
+#angular template used
 class DisplaySlides(ListAPIView):
     serializer_class = SlideSerializer
 
     def get_queryset(self):
         display = get_object_or_404(Display, pk=self.kwargs['pk'])
+        print(display)
         return display.get_slides()
 
-
+#angular template used
 class DisplayVideo(RetrieveAPIView):
     serializer_class = VideoSerializer
 
     def get_object(self):
         display = get_object_or_404(Display, pk=self.kwargs['pk'])
+        print(display)
         return display.get_video()
 
 

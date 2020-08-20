@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'rest_framework',
     'djangular',
     'djng',
     'easy_thumbnails',
@@ -118,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE =  'Asia/Calcutta'
 
 USE_I18N = True
 
@@ -138,5 +139,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     ('node_modules', os.path.join(BASE_DIR, 'node_modules')),
     os.path.join(BASE_DIR, "signage/static"),
-    os.path.join(BASE_DIR,'slides')
+    os.path.join(BASE_DIR, "static"),
+    
 ]
