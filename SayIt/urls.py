@@ -5,7 +5,7 @@ from django.urls import path, include
 from posts.views import home_view, post_detail_view
 
 urlpatterns = [
-    # path('djangular/', include('djangular.urls')),
+    path('angular/', include('djng.urls')),
 
     path('signage/', include('signage.urls','signage')),
     path('admin/', admin.site.urls),

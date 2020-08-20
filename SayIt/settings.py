@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'SayIt.wsgi.application'
+WSGI_APPLICATION = 'SayIt.wsgi.application'
 
 
 # Database
