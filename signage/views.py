@@ -24,6 +24,7 @@ class StaffRequiredMixin(UserPassesTestMixin):
 #angular template used
 class DisplayDetail(DetailView):
     model = Display
+    print("this is up")
 
 
 class DisplayList(StaffRequiredMixin, ListView):
@@ -50,8 +51,9 @@ class DisplaySlides(ListAPIView):
 
     def get_queryset(self):
         display = get_object_or_404(Display, pk=self.kwargs['pk'])
-        print(display)
-        return display.get_slides()
+        slides = display.get_slides()
+        print(slides[0].image.url)
+        return slides
 
 #angular template used
 class DisplayVideo(RetrieveAPIView):
@@ -59,8 +61,9 @@ class DisplayVideo(RetrieveAPIView):
 
     def get_object(self):
         display = get_object_or_404(Display, pk=self.kwargs['pk'])
-        print(display)
-        return display.get_video()
+        video = display.get_video()
+        print(video)
+        return video
 
 
 class DisplayUpdate(StaffRequiredMixin, UpdateView):

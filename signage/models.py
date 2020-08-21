@@ -41,7 +41,7 @@ class Content(TimeFramedModel):
 
 class Slide(Content):
     image = models.ImageField(
-        upload_to='static/slides/',
+        upload_to='slides/',
     )
     duration = models.PositiveIntegerField(
         default=10,

@@ -7,4 +7,5 @@ class SlideSerializer(serializers.Serializer):
 
 
 class VideoSerializer(serializers.Serializer):
+    print('vs')
     url = serializers.URLField()
